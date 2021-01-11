@@ -19,88 +19,109 @@
 		</div>
 		<br />
 		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
+			<div class="row justify-content-center">
+				<div class="col-8">
 					<h1>Quiz Questions</h1>
 					<form>
-						<label class="form-label">What is the capital of Arkansas?</label>
-						<input
-							class="form-control"
-							type="text"
-							id="answer1"
-							placeholder="Type your answer..."
-						/>
-						<i id="grade1"></i>
-						<br />
-
-						<label class="form-label">What is the State Mammal?</label>
-						<input
-							class="form-control"
-							type="text"
-							id="answer2"
-							placeholder="Type your answer..."
-						/>
-						<i id="grade2"></i>
-						<br />
-
-						<label class="form-label">What is the State Flower?</label>
-						<input
-							class="form-control"
-							type="text"
-							id="answer3"
-							placeholder="Type your answer..."
-						/>
-						<i id="grade3"></i>
-						<br />
-
-						<label class="form-label">What is the State Insect?</label>
-						<input
-							class="form-control"
-							type="text"
-							id="answer4"
-							placeholder="Type your answer..."
-						/>
-						<i id="grade4"></i>
-						<br />
-
-						<label class="form-label">What is the State Mineral?</label>
-						<input
-							class="form-control"
-							type="text"
-							id="answer5"
-							placeholder="Type your answer..."
-						/>
-						<i id="grade5"></i>
-						<br />
-
-						<label class="form-label">What is the State Tree?</label>
-						<input
-							class="form-control"
-							type="text"
-							id="answer6"
-							placeholder="Type your answer..."
-						/>
-						<i id="grade6"></i>
-						<br />
-
-						<label class="form-label">What is the State Bird?</label>
-						<input
-							class="form-control"
-							type="text"
-							id="answer7"
-							placeholder="Type your answer..."
-						/>
-						<i id="grade7"></i>
-						<br />
-					</form>
-					<br />
-					<label class="form-label" id="answerCount"></label>
-					<p>
-						<button id="checkAnswers" class="btn btn-info">
-							Check Answers
-						</button>
-						<button id="resetForm" class="btn btn-secondary">Reset Form</button>
-					</p>
+						<div class="card">
+  							<div class="card-body">
+								<label class="form-label">What is the capital of Arkansas?</label>
+								<input
+									class="form-control"
+									type="text"
+									id="answer1"
+									placeholder="Type your answer..."
+								/>
+								<i id="grade1"></i>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<label class="form-label">What is the State Mammal?</label>
+								<input
+									class="form-control"
+									type="text"
+									id="answer2"
+									placeholder="Type your answer..."
+								/>
+								<i id="grade2"></i>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<label class="form-label">What is the State Flower?</label>
+								<input
+									class="form-control"
+									type="text"
+									id="answer3"
+									placeholder="Type your answer..."
+								/>
+								<i id="grade3"></i>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<label class="form-label">What is the State Insect?</label>
+								<input
+									class="form-control"
+									type="text"
+									id="answer4"
+									placeholder="Type your answer..."
+								/>
+								<i id="grade4"></i>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<label class="form-label">What is the State Mineral?</label>
+								<input
+									class="form-control"
+									type="text"
+									id="answer5"
+									placeholder="Type your answer..."
+								/>
+								<i id="grade5"></i>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<label class="form-label">What is the State Tree?</label>
+								<input
+									class="form-control"
+									type="text"
+									id="answer6"
+									placeholder="Type your answer..."
+								/>
+								<i id="grade6"></i>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<label class="form-label">What is the State Bird?</label>
+								<input
+									class="form-control"
+									type="text"
+									id="answer7"
+									placeholder="Type your answer..."
+								/>
+								<i id="grade7"></i>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">					
+								<label class="form-label" id="answerCount"></label>
+							</div>
+						</div>
+						
+					</form>	
+					<div class="card">
+						<div class="card-body">	
+							<button id="checkAnswers" class="btn btn-info">
+								Check Answers
+							</button>
+							<button id="resetForm" class="btn btn-secondary">Reset Form</button>
+						</div>
+					</div>				
 				</div>
 			</div>
 		</div>
@@ -110,6 +131,15 @@
 				.getElementById('checkAnswers')
 				.addEventListener('click', checkAnswer);
 			document.getElementById('resetForm').addEventListener('click', resetForm);
+
+			function resetForm() {
+
+				for (var i = 0; i < answers.length; i++) {
+					let fieldId = i + 1;
+					document.getElementById('answer' + fieldId).value = '';
+					document.getElementById('grade' + fieldId).innerHTML = '<i></i>';
+				}
+			}
 
 			function checkAnswer() {
 				answers = [
@@ -123,6 +153,7 @@
 				];
 
 				var correctNumber = 0;
+				let totalNumber = answers.length;
 
 				for (var i = 0; i < answers.length; i++) {
 					let fieldId = i + 1;
@@ -142,20 +173,13 @@
 					}
 				}
 
-				if ((correctNumber = answers.length + 1)) {
+				document.getElementById('answerCount').innerHTML  = "You have " + correctNumber + " of " + totalNumber + " correct.";
+				//console.log("You have " + correctNumber + " of " + totalNumber + " correct.");
+				if ((correctNumber == answers.length)) {
 					window.open("fireworks.html");
-				} else {
-					console.log('Big Frownie Face Animation.');
-				}
+				} 
 			}
 
-			function resetForm() {
-
-				for (var i = 0; i < answers.length; i++) {
-					let fieldId = i + 1;
-					document.getElementById('answer' + fieldId).value = '';
-					document.getElementById('grade' + fieldId).innerHTML = '<i></i>';
-				}
-			}
+			
 		</script>
 </html>
