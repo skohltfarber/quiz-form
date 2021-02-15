@@ -7,7 +7,7 @@
 1. Use Bootstrap to layout the page & form.
 1. Use Vanilla JS / HTML5 to build the functionality
 1. Ask 5 simple questions – you decide what the questions are 
- 1. (ex: Q: what color is the sky? A: blue, Q: What animal says “oink”? A: pig, etc.)
+   1. (ex: Q: what color is the sky? A: blue, Q: What animal says “oink”? A: pig, etc.)
 1. If the user gets the answer correct, style the question positively
 1. If the user gets the answer wrong, style the question negatively
 1. Use custom CSS + Font Awesome icons to visualize the grading
